@@ -1,0 +1,24 @@
+services:
+  prometheus:
+    image: 
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - 
+    environment:
+      - 
+    command:
+      - 
+    
+  grafana:
+    image: 
+    container_name: grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - 
+    environment:
+      - 
+    command:
+      - 
