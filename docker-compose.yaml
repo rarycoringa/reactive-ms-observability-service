@@ -22,3 +22,15 @@ services:
       - 
     command:
       - 
+
+  zipkin:
+    image: 
+    container_name: zipkin
+    ports:
+      - 9411:9411
+    volumes:
+      - 
+    environment:
+      - 
+    command:
+      - 
