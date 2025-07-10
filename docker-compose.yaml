@@ -1,36 +1,40 @@
 services:
   prometheus:
-    image: 
+    image: prom/prometheus:latest
     container_name: prometheus
     ports:
       - 9090:9090
     volumes:
-      - 
-    environment:
-      - 
+      - ./prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
     command:
-      - 
+      - '--config.file=/etc/prometheus/prometheus.yaml'
     
   grafana:
-    image: 
+    image: grafana/grafana:latest
     container_name: grafana
     ports:
       - 3000:3000
     volumes:
-      - 
+      - grafana_data:/var/lib/grafana
     environment:
-      - 
-    command:
-      - 
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - prometheus
 
-  zipkin:
-    image: 
-    container_name: zipkin
-    ports:
-      - 9411:9411
-    volumes:
-      - 
-    environment:
-      - 
-    command:
-      - 
+  # zipkin:
+  #   image: 
+  #   container_name: zipkin
+  #   ports:
+  #     - 9411:9411
+  #   volumes:
+  #     - 
+  #   environment:
+  #     - 
+  #   command:
+  #     - 
+
+volumes:
+  prometheus_data:
+  grafana_data:
