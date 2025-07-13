@@ -1,5 +1,5 @@
 global:
-  scrape_interval: 15s
+  scrape_interval: 5s
 
 scrape_configs:
   - job_name: "prometheus"
@@ -8,8 +8,44 @@ scrape_configs:
         labels:
           app: "prometheus"
 
-  - job_name: "grafana"
+  - job_name: "discovery"
+    metrics_path: "/actuator/prometheus"
     static_configs:
-      - targets: ["grafana:3000"]
+      - targets: ["discovery1:8761", "discovery2:8762"]
         labels:
-          app: "grafana"
+          app: "discovery"
+
+  - job_name: "config"
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ["config1:8888", "config2:8889"]
+        labels:
+          app: "config"
+
+  - job_name: "gateway"
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ["gateway:8080"]
+        labels:
+          app: "gateway"
+
+  # - job_name: "aiclient"
+  #   metrics_path: "/actuator/prometheus"
+  #   static_configs:
+  #     - targets: ["aiclient:0000", "aiclient:0000"]
+  #       labels:
+  #         app: ""
+
+  - job_name: "cities"
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ["cities1:8181", "cities2:8182"]
+        labels:
+          app: "cities"
+
+  - job_name: "distances"
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ["distances1:8185", "distances2:8186"]
+        labels:
+          app: "distances"
