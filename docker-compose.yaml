@@ -10,7 +10,7 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yaml'
     networks:
-      - dist-sys-ms-network
+      - reactive-ms-network
     
   grafana:
     image: grafana/grafana:latest
@@ -26,7 +26,7 @@ services:
       - prometheus
       - loki
     networks:
-      - dist-sys-ms-network
+      - reactive-ms-network
 
   zipkin:
     image: openzipkin/zipkin
@@ -36,7 +36,7 @@ services:
     depends_on:
       - prometheus
     networks:
-      - dist-sys-ms-network
+      - reactive-ms-network
 
   loki:
     image: grafana/loki:2.8.2
@@ -50,7 +50,7 @@ services:
       - loki_data:/tmp/loki
       - ./loki/loki-config.yaml:/etc/loki/local-config.yaml
     networks:
-      - dist-sys-ms-network
+      - reactive-ms-network
   
   promtail:
     image: grafana/promtail:2.8.2
@@ -68,7 +68,7 @@ services:
     depends_on:
       - loki
     networks:
-      - dist-sys-ms-network
+      - reactive-ms-network
 
 volumes:
   prometheus_data:
@@ -76,5 +76,5 @@ volumes:
   loki_data:
 
 networks:
-  dist-sys-ms-network:
+  reactive-ms-network:
     external: true

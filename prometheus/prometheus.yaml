@@ -36,16 +36,16 @@ scrape_configs:
   #       labels:
   #         app: ""
 
-  - job_name: "cities"
-    metrics_path: "/actuator/prometheus"
-    static_configs:
-      - targets: ["cities1:8181", "cities2:8182"]
-        labels:
-          app: "cities"
+  # - job_name: "cities"
+  #   metrics_path: "/actuator/prometheus"
+  #   static_configs:
+  #     - targets: ["cities1:8181", "cities2:8182"]
+  #       labels:
+  #         app: "cities"
 
-  - job_name: "distances"
-    metrics_path: "/actuator/prometheus"
-    static_configs:
-      - targets: ["distances1:8185", "distances2:8186"]
-        labels:
-          app: "distances"
+  # - job_name: "distances"
+  #   metrics_path: "/actuator/prometheus"
+  #   static_configs:
+  #     - targets: ["distances1:8185", "distances2:8186"]
+  #       labels:
+  #         app: "distances"
