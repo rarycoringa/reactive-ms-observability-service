@@ -29,19 +29,19 @@ scrape_configs:
         labels:
           app: "gateway"
 
-  - job_name: "ingestion"
+  - job_name: "user"
     metrics_path: "/actuator/prometheus"
     static_configs:
-      - targets: ["ingestion:8181"]
+      - targets: ["user:8181"]
         labels:
-          app: "ingestion"
+          app: "user"
 
-  - job_name: "monitoring"
+  - job_name: "post"
     metrics_path: "/actuator/prometheus"
     static_configs:
-      - targets: ["monitoring:8282"]
+      - targets: ["post:8282"]
         labels:
-          app: "monitoring"
+          app: "post"
 
   - job_name: "alert"
     metrics_path: "/actuator/prometheus"
